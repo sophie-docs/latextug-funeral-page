@@ -4,17 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Willkommen bei LaTeX@TU Graz!</title>
-    <script>
-      function init() {
-	if ( window.location.hash.substr(0, 2) !== "#/" )
-          return;
-
-        let base = "http://web.archive.org/web/20230323164433/https://latex.tugraz.at/";
-        window.location = base + window.location.hash.substr(2);
-      }
-    </script>
 </head>
-<body onload="init()">
+<body>
     <main>
         <header>
             <h1>In remembrance of...
@@ -26,13 +17,18 @@
         
         <h2>Eine Ära geht zu Ende...</h2>
         
-        <p>Nach fast 20 Jahren haben wir uns entschlossen, das Projekt LaTeχ@TUG zu archivieren. Die mittlerweile fehlende Beziehung der aktiven Projektmitglieder*innen zur TU Graz und zu LaTeχ, in Kombination mit mangelndem "Nachwuchs" haben diesen Schritt notwendig gemacht.</p>
+        <p>Nach fast 20 Jahren haben wir uns entschlossen, das Projekt LaTeχ@TUG zu archivieren. Die mittlerweile fehlende Beziehung der aktiven Projektmitglieder zur TU Graz und zu LaTeχ, in Kombination mit mangelndem "Nachwuchs" haben diesen Schritt notwendig gemacht.</p>
         
         <h2>Was nun?</h2>
         <p>Wir wollen euch natürlich nicht komplett ohne Infos zurücklassen, und empfehlen folgendes:</p>
         <ul>
             <li>Verwende deine Lieblingssuchmaschine mit Begriffen wie <a href="https://duckduckgo.com/?t=ffab&q=LaTeX+Einf%C3%BChrung+Kurs">»LaTeX Einführung Kurs«</a>, um alternative deutschsprachige Tutorials zu finden.</li>
-            <li>Besuche die <a href="http://web.archive.org/web/20230401182154/https://latex.tugraz.at/start">in der WaybackMachine archivierte Version von LaTeχ@TUG</a>, um auf die originalen Inhalte zuzugreifen. Achtung, viele der Informationen sind nicht mehr aktuell!</li>
+            <li>Besuche die <a href="http://web.archive.org/web/20230401182154/https://latex.tugraz.at" id="baselink">in der WaybackMachine archivierte Version von LaTeχ@TUG</a>, um auf die originalen Inhalte zuzugreifen. Achtung, viele der Informationen sind nicht mehr aktuell!
+                <ul id="archivelink" class="hidden">
+                    <li>Die angeforderte Seite findest du direkt unter <a href="http://web.archive.org/web/20230401182154/https://latex.tugraz.at" id="deeplink">http://web.archive.org/web/20230401182154/https://latex.tugraz.at</a>
+                    </li>
+                </ul>
+            </li>
             <li>Für TU Graz-spezifische Vorlagen besuche die <a href="http://cd.tugraz.at">Abteilung Kommunikation und Marketing</a> der TU Graz:
                 <ul>
                     <li>Bedienstete können auf Vorlagen für <a href="https://tu4u.tugraz.at/bedienstete/organisation-und-administration/vorlagen-und-corporate-design/downloads-und-anwendungen-logoformate-und-vorlagen/digitale-praesentationen">Präsentationen</a>, <a href="https://tu4u.tugraz.at/bedienstete/organisation-und-administration/vorlagen-und-corporate-design/downloads-und-anwendungen-logoformate-und-vorlagen/dokumente-im-format-a4-word-und-latex">Berichte</a> und <a href="https://tu4u.tugraz.at/bedienstete/organisation-und-administration/vorlagen-und-corporate-design/downloads-und-anwendungen-logoformate-und-vorlagen/geschaeftspapiere-brief-kuverts">Briefe</a> zugreifen.</li>
@@ -102,6 +98,7 @@
         }
         header svg {
             width: 80%;
+            max-width: 600px;
         }
         @media (max-width: 600px) {
             main {
@@ -112,6 +109,21 @@
                 width: 100%;
             }
         }
+        .hidden {
+            display: none;
+        }
     </style>
+    <script>
+        function setLinkFromFragment() {
+            if(window.location.hash.startsWith("#/")) {
+                document.querySelector("#archivelink").classList.remove("hidden");
+                let link = document.querySelector("#deeplink");
+                let base = document.querySelector("#baselink").href;
+                let fragment = window.location.hash.substring(1);
+                link.href = link.innerText = base + fragment;
+            }
+        }
+        window.onload = window.onhashchange = setLinkFromFragment;
+    </script>
 </body>
 </html>
