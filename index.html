@@ -49,8 +49,7 @@
     <style>
         body {
             font-family:Verdana, Geneva, Tahoma, sans-serif;
-            color:#333;
-            background:#fbfaf9 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABzCAYAAABZ/2hDAAAAAXNSR0IArs4c6QAAAAZiS0dEAPsA+gD5upVmjQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wGHg4vKcyeLvMAAACYSURBVCjP7cghTkNRFEXRffZ9/b+hCWnrIMHUIZgAAyDBMIyOHAwOgSvvYpgCrksuWG8fJE4hLaGl03+nU3CK1ZK0ZLQ4pvRExjIFUly2i+xvprCkuIyNHHYIOyo/ln3cR76ri7EOOWyR9265m0iC+VimfSKVTZTP+7afKmR1FP0Sef4KCSX9SuWxg0H7+AYCEmKfz1z9p1/WFSmmKt0sRgAAAABJRU5ErkJggg==) top left repeat-x;
+            color:#333;            
             line-height: 1.5;
         }
         html {
@@ -58,6 +57,8 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            background-color: #fbfaf9;
+            box-shadow: inset 0px 20px 30px -15px #CCC;
         }
         h1 {
             font-size: 1.5em;
@@ -99,6 +100,7 @@
         header svg {
             width: 80%;
             max-width: 600px;
+            filter: drop-shadow( 3px 3px 3px rgba(0, 0, 0, 0.25));
         }
         @media (max-width: 600px) {
             main {
